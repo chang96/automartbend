@@ -1,6 +1,7 @@
 require("dotenv").config()
 const express = require("express")
 const app = express()
+const bodyParser = require("body-parser")
 const PORT = process.env.PORT || 3001
 const carsRoutes = require("./routes/index")
 const mongoose = require("mongoose")
@@ -15,7 +16,10 @@ connection.once("open", function(){
     })
 })
 
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 
-app.use("/", (req, res)=> res.send("App Running"))
+
+// app.use("/", (req, res)=> res.send("App Running"))
 app.use("/cars", carsRoutes)
 
