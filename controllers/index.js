@@ -19,7 +19,13 @@ const addCars = function (req, res){
 
 
 const deleteCars = function(req, res){
-
+    let id = req.query.id
+    Cars.deleteOne({"_id": id}, function(e, d){
+        if(e) res.send({"data": "An error occured"})
+        else {
+            res.send({"response": "deleted"})
+        }
+    })
 }
 
 
