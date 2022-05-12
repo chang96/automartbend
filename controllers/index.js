@@ -24,7 +24,13 @@ const deleteCars = function(req, res){
 
 
 const getAllCars = function (req, res){
-
+    Cars.find({}, function(e, d){
+        if(e){
+            res.send({"err": "error occured"})
+        } else {
+            res.send({"data": d})
+        }
+    })
 }
 
 
