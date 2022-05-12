@@ -1,4 +1,6 @@
 const Router = require("express")
 const router = Router()
+const carControllers = require("../controllers/index")
+router.get("/", carControllers.home)
 
-export default router
+module.exports = router
